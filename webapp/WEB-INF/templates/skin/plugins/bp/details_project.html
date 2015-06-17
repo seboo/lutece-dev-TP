@@ -5,19 +5,16 @@
       <h4>#i18n{bp.manage_projects.tableLabel}</h4>
 	
 	  <div class="panel panel-primary">
-	  <div class="panel-heading">Project</div>
+	  <div class="panel-heading">Name : ${project.name}</div>
 	  <div class="panel-body">
 	    <div class=list-group">
 	    	<p class="list-group-item">ID : ${project.id} </p>
-	    	<p class="list-group-item">Name : ${project.name}</p>
-	    	<p class="list-group-item">Description : ${project.description} </p>
+	    	<d class="list-group-item">Description : ${project.description} </p>
 	    	<p class="list-group-item">Coût : ${project.cout} 000 000 € </p>
+	    	<p class="list-group-item">Commentaires : @Extender[${project.id},project,comment]@ </p>
+	    	<p class="list-group-item">Vue : @Extender[${project.id},project,hit,{increment:true}]@ </p>
+	    	<p class="list-group-item">Votes : @Extender[${project.id},project,rating,{show:"all"}]@ </p>
 	    </div>
 	  </div>
 	</div>  
 </div>
-
-
-
-
-  

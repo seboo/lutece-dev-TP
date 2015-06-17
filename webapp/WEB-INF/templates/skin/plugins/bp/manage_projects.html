@@ -8,14 +8,15 @@
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
 	    
 	    	<a class="thumbnail" href="jsp/site/Portal.jsp?page=project&view=detailsProject&id=${project.id}">
-	    	 <img src="${project.imageUrl}">
-	    	  <div class="caption">
-	    	 	<h3>${project.name}</h3>
-	    	 </div>
-	    	 </a>
-	          
-	        
+		    	 <img src="${project.imageUrl}">			  
+		    	  <div class="caption">
+		    	 	<h3>${project.name}</h3>
+		    	 	<p>Coût : ${project.cout} €</p>
+		    	 	<p>Vues:@Extender[${project.id},project,hit,{increment:false}]@ </p>
+					<p>Votes: @Extender[${project.id},project,rating,{show:"vote"}]@  </p>
+		    	 </div>
+			</a>
+	    	       
     </div>
-
     </#list>
  </div>
