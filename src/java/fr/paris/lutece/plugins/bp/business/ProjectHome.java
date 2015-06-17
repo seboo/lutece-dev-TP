@@ -35,6 +35,7 @@ package fr.paris.lutece.plugins.bp.business;
 
 import fr.paris.lutece.portal.service.plugin.Plugin;
 import fr.paris.lutece.portal.service.plugin.PluginService;
+import fr.paris.lutece.portal.service.resource.IExtendableResourceService;
 import fr.paris.lutece.portal.service.spring.SpringContextService;
 
 import java.util.Collection;
@@ -48,6 +49,7 @@ public final class ProjectHome
     // Static variable pointed at the DAO instance
     private static IProjectDAO _dao = SpringContextService.getBean( "bp.projectDAO" );
     private static Plugin _plugin = PluginService.getPlugin( "bp" );
+    //private static IExtendableResourceService serviceExtend = SpringContextService.getBean("projectExtend");
 
     /**
      * Private constructor - this class need not be instantiated
