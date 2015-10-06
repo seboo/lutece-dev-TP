@@ -34,9 +34,11 @@
  
 package fr.paris.lutece.plugins.bp.business;
 
+import fr.paris.lutece.plugins.bp.service.ProjectCacheService;
 import fr.paris.lutece.portal.service.plugin.Plugin;
 import fr.paris.lutece.portal.service.plugin.PluginService;
 import fr.paris.lutece.portal.service.spring.SpringContextService;
+
 import java.util.Collection;
 
 /**
@@ -65,6 +67,8 @@ public final class ProjectHome
     public static Project create( Project project )
     {
         _dao.insert( project, _plugin );
+     
+
 
         return project;
     }
@@ -77,7 +81,7 @@ public final class ProjectHome
     public static Project update( Project project )
     {
         _dao.store( project, _plugin );
-
+      
         return project;
     }
 
@@ -88,6 +92,7 @@ public final class ProjectHome
     public static void remove( int nKey )
     {
         _dao.delete( nKey, _plugin );
+        
     }
 
     ///////////////////////////////////////////////////////////////////////////
@@ -100,6 +105,8 @@ public final class ProjectHome
      */
     public static Project findByPrimaryKey( int nKey )
     {
+    	
+    
         return _dao.load( nKey, _plugin);
     }
 

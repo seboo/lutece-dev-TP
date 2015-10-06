@@ -37,6 +37,7 @@ package fr.paris.lutece.plugins.bp.web;
 
 import fr.paris.lutece.plugins.bp.business.Project;
 import fr.paris.lutece.plugins.bp.business.ProjectHome;
+import fr.paris.lutece.plugins.bp.service.ProjectCacheService;
 import fr.paris.lutece.portal.service.message.AdminMessage;
 import fr.paris.lutece.portal.service.message.AdminMessageService;
 import fr.paris.lutece.portal.util.mvc.admin.annotations.Controller;
@@ -47,7 +48,6 @@ import fr.paris.lutece.util.url.UrlItem;
 
 import java.util.List;
 import java.util.Map;
-
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -136,6 +136,8 @@ public class ProjectJspBean extends ManageBpJspBean
 
         Map<String, Object> model = getModel(  );
         model.put( MARK_PROJECT, _project );
+        
+       
 
         return getPage( PROPERTY_PAGE_TITLE_CREATE_PROJECT, TEMPLATE_CREATE_PROJECT, model );
     }
@@ -174,7 +176,9 @@ public class ProjectJspBean extends ManageBpJspBean
 
         ProjectHome.create( _project );
         addInfo( INFO_PROJECT_CREATED, getLocale(  ) );
-
+        ProjectCacheService.getInstance().removeKey( ProjectCacheService.getInstance().getKeyProject());
+        
+      
         return redirectView( request, VIEW_MANAGE_PROJECTS );
     }
 
@@ -210,7 +214,8 @@ public class ProjectJspBean extends ManageBpJspBean
         int nId = Integer.parseInt( request.getParameter( PARAMETER_ID_PROJECT ) );
         ProjectHome.remove( nId );
         addInfo( INFO_PROJECT_REMOVED, getLocale(  ) );
-
+        ProjectCacheService.getInstance().removeKey( ProjectCacheService.getInstance().getKeyProject());
+      
         return redirectView( request, VIEW_MANAGE_PROJECTS );
     }
 
@@ -259,7 +264,7 @@ public class ProjectJspBean extends ManageBpJspBean
 
         ProjectHome.update( _project );
         addInfo( INFO_PROJECT_UPDATED, getLocale(  ) );
-
+        ProjectCacheService.getInstance().removeKey( ProjectCacheService.getInstance().getKeyProject());
         return redirectView( request, VIEW_MANAGE_PROJECTS );
     }
 }

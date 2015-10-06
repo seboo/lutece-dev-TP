@@ -1,4 +1,4 @@
-package fr.paris.lutece.plugins.bp.service.rest;
+package fr.paris.lutece.plugins.bp.service;
 
 import java.util.Collection;
 import java.util.List;
@@ -20,7 +20,6 @@ import fr.paris.lutece.plugins.bp.business.Project;
 import fr.paris.lutece.plugins.bp.business.ProjectHome;
 import fr.paris.lutece.plugins.rest.util.json.JSONUtil;
 import fr.paris.lutece.portal.service.message.SiteMessageException;
-
 import net.sf.json.JSONObject;
 
 
@@ -32,7 +31,7 @@ public class ProjectRest {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getProjects() {
 		
-		Collection<Project> ListeProject =  ProjectHome.getProjectsList();
+		Collection<Project> ListeProject =  ProjectCacheService.getInstance().getListeProjectFromCache();
 		 
 		
 		 JSONObject ListejsonProject = new JSONObject(  );
@@ -88,7 +87,7 @@ public class ProjectRest {
 		String strJSON = "";
 		try
 	 {
-		Project project = ProjectHome.findByPrimaryKey(nId);
+		Project project = ProjectCacheService.getInstance().getProjectFromCache(nId);
 		strJSON = this.buildJSON(project);
 	 }
 			        catch ( NumberFormatException e )

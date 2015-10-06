@@ -6,7 +6,7 @@
 
 
     <bean id="bp.projectDAO"  class="fr.paris.lutece.plugins.bp.business.ProjectDAO" />  
-    <bean id="bp.projectExtendableResourceService" class="fr.paris.lutece.plugins.bp.service.resource.ProjectExtendableResourceService" />
+    <bean id="bp.projectExtendableResourceService" class="fr.paris.lutece.plugins.bp.service.ProjectExtendableResourceService" />
 
-<bean id="bp.projectRest"  class="fr.paris.lutece.plugins.bp.service.rest.ProjectRest" />  
+<bean id="bp.projectRest"  class="fr.paris.lutece.plugins.bp.service.ProjectRest" />  
 </beans>

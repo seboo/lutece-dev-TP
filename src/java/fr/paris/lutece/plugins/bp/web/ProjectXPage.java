@@ -35,6 +35,7 @@ package fr.paris.lutece.plugins.bp.web;
 
 import fr.paris.lutece.plugins.bp.business.Project;
 import fr.paris.lutece.plugins.bp.business.ProjectHome;
+import fr.paris.lutece.plugins.bp.service.ProjectCacheService;
 import fr.paris.lutece.portal.util.mvc.commons.annotations.Action;
 import fr.paris.lutece.portal.web.resource.ExtendableResourcePluginActionManager;
 import fr.paris.lutece.portal.web.xpages.XPage;
@@ -101,8 +102,8 @@ public class ProjectXPage extends MVCApplication {
 	public XPage getManageProjects(HttpServletRequest request) {
 		_project = null;
 		Map<String, Object> model = getModel();
-		model.put(MARK_PROJECT_LIST, ProjectHome.getProjectsList());
-
+		model.put(MARK_PROJECT_LIST, ProjectCacheService.getInstance().getListeProjectFromCache());
+		
 		return getXPage(TEMPLATE_MANAGE_PROJECTS, request.getLocale(), model);
 	}
 
@@ -118,7 +119,7 @@ public class ProjectXPage extends MVCApplication {
 		int nId = Integer.parseInt(request.getParameter(PARAMETER_ID_PROJECT));
 
 		if (_project == null || (_project.getId() != nId)) {
-			_project = ProjectHome.findByPrimaryKey(nId);
+			_project =  ProjectCacheService.getInstance().getProjectFromCache(nId);
 		}
 
 		Map<String, Object> model = getModel();

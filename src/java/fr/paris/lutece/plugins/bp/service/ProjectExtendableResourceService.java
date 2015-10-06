@@ -1,4 +1,4 @@
-package fr.paris.lutece.plugins.bp.service.resource;
+package fr.paris.lutece.plugins.bp.service;
 
 import java.util.Locale;
 
