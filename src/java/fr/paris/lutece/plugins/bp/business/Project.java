@@ -45,6 +45,7 @@ public class Project
 {
     // Variables declarations 
     private int _nId;
+    
     @NotEmpty( message = "#i18n{bp.validation.project.Name.notEmpty}" )
     @Size( max = 50, message = "#i18n{bp.validation.project.Name.size}" )
     private String _strName;
@@ -70,9 +71,9 @@ public class Project
     }
 
     /**
-    * Returns the Id
-    * @return The Id
-    */
+     * Returns the Id
+     * @return The Id
+     */
     public int getId(  )
     {
         return _nId;
