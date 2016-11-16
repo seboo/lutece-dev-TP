@@ -7,15 +7,15 @@
  * are met:
  *
  *  1. Redistributions of source code must retain the above copyright notice
- *	 and the following disclaimer.
+ *     and the following disclaimer.
  *
  *  2. Redistributions in binary form must reproduce the above copyright notice
- *	 and the following disclaimer in the documentation and/or other materials
- *	 provided with the distribution.
+ *     and the following disclaimer in the documentation and/or other materials
+ *     provided with the distribution.
  *
  *  3. Neither the name of 'Mairie de Paris' nor 'Lutece' nor the names of its
- *	 contributors may be used to endorse or promote products derived from
- *	 this software without specific prior written permission.
+ *     contributors may be used to endorse or promote products derived from
+ *     this software without specific prior written permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
@@ -31,7 +31,6 @@
  *
  * License 1.0
  */
- 
 package fr.paris.lutece.plugins.bp.business;
 
 import fr.paris.lutece.plugins.bp.service.ProjectCacheService;
@@ -41,14 +40,13 @@ import fr.paris.lutece.portal.service.spring.SpringContextService;
 
 import java.util.Collection;
 
+
 /**
  * This class provides instances management methods (create, find, ...) for Project objects
  */
-
 public final class ProjectHome
 {
     // Static variable pointed at the DAO instance
-
     private static IProjectDAO _dao = SpringContextService.getBean( "bp.projectDAO" );
     private static Plugin _plugin = PluginService.getPlugin( "bp" );
 
@@ -67,8 +65,6 @@ public final class ProjectHome
     public static Project create( Project project )
     {
         _dao.insert( project, _plugin );
-     
-
 
         return project;
     }
@@ -81,7 +77,7 @@ public final class ProjectHome
     public static Project update( Project project )
     {
         _dao.store( project, _plugin );
-      
+
         return project;
     }
 
@@ -92,7 +88,6 @@ public final class ProjectHome
     public static void remove( int nKey )
     {
         _dao.delete( nKey, _plugin );
-        
     }
 
     ///////////////////////////////////////////////////////////////////////////
@@ -105,27 +100,24 @@ public final class ProjectHome
      */
     public static Project findByPrimaryKey( int nKey )
     {
-    	
-    
-        return _dao.load( nKey, _plugin);
+        return _dao.load( nKey, _plugin );
     }
 
     /**
      * Load the data of all the project objects and returns them in form of a collection
      * @return the collection which contains the data of all the project objects
      */
-    public static Collection<Project> getProjectsList( )
+    public static Collection<Project> getProjectsList(  )
     {
         return _dao.selectProjectsList( _plugin );
     }
-    
+
     /**
      * Load the id of all the project objects and returns them in form of a collection
      * @return the collection which contains the id of all the project objects
      */
-    public static Collection<Integer> getIdProjectsList( )
+    public static Collection<Integer> getIdProjectsList(  )
     {
         return _dao.selectIdProjectsList( _plugin );
     }
 }
-

@@ -20,6 +20,7 @@ import fr.paris.lutece.plugins.bp.business.Project;
 import fr.paris.lutece.plugins.bp.business.ProjectHome;
 import fr.paris.lutece.plugins.rest.util.json.JSONUtil;
 import fr.paris.lutece.portal.service.message.SiteMessageException;
+
 import net.sf.json.JSONObject;
 
 
