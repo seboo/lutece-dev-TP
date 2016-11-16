@@ -30,38 +30,38 @@
  * POSSIBILITY OF SUCH DAMAGE.
  *
  * License 1.0
- */ 
+ */
 package fr.paris.lutece.plugins.bp.business;
 
-import javax.validation.constraints.*;
 import org.hibernate.validator.constraints.*;
+
+import javax.validation.constraints.*;
 
 
 /**
  * This is the business class for the object Project
- */ 
+ */
 public class Project
 {
     // Variables declarations 
     private int _nId;
     
     @NotEmpty( message = "#i18n{bp.validation.project.Name.notEmpty}" )
-    @Size( max = 50 , message = "#i18n{bp.validation.project.Name.size}" ) 
+    @Size( max = 50, message = "#i18n{bp.validation.project.Name.size}" )
     private String _strName;
-    
     @NotEmpty( message = "#i18n{bp.validation.project.Description.notEmpty}" )
-    @Size( max = 255 , message = "#i18n{bp.validation.project.Description.size}" ) 
+    @Size( max = 255, message = "#i18n{bp.validation.project.Description.size}" )
     private String _strDescription;
-    @URL(message = "#i18n{portal.validation.message.url}")
+    @URL( message = "#i18n{portal.validation.message.url}" )
     @NotEmpty( message = "#i18n{bp.validation.project.ImageUrl.notEmpty}" )
-    @Size( max = 255 , message = "#i18n{bp.validation.project.ImageUrl.size}" ) 
+    @Size( max = 255, message = "#i18n{bp.validation.project.ImageUrl.size}" )
     private String _strImageUrl;
 
     /**
      * Returns the Id
      * @return The Id
      */
-    public int getId( )
+    public int getId(  )
     {
         return _nId;
     }
@@ -69,7 +69,7 @@ public class Project
     /**
      * Sets the Id
      * @param nId The Id
-     */ 
+     */
     public void setId( int nId )
     {
         _nId = nId;
@@ -79,7 +79,7 @@ public class Project
      * Returns the Name
      * @return The Name
      */
-    public String getName( )
+    public String getName(  )
     {
         return _strName;
     }
@@ -87,16 +87,17 @@ public class Project
     /**
      * Sets the Name
      * @param strName The Name
-     */ 
+     */
     public void setName( String strName )
     {
         _strName = strName;
     }
+
     /**
      * Returns the Description
      * @return The Description
      */
-    public String getDescription( )
+    public String getDescription(  )
     {
         return _strDescription;
     }
@@ -104,16 +105,17 @@ public class Project
     /**
      * Sets the Description
      * @param strDescription The Description
-     */ 
+     */
     public void setDescription( String strDescription )
     {
         _strDescription = strDescription;
     }
+
     /**
      * Returns the ImageUrl
      * @return The ImageUrl
      */
-    public String getImageUrl( )
+    public String getImageUrl(  )
     {
         return _strImageUrl;
     }
@@ -121,7 +123,7 @@ public class Project
     /**
      * Sets the ImageUrl
      * @param strImageUrl The ImageUrl
-     */ 
+     */
     public void setImageUrl( String strImageUrl )
     {
         _strImageUrl = strImageUrl;
