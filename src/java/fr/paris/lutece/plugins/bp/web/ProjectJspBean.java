@@ -223,10 +223,12 @@ public class ProjectJspBean extends ManageBpJspBean
         {
             _project = ProjectHome.findByPrimaryKey( nId );
         }
+
         //plugin extends
-       
+
         Map<String, Object> model = getModel(  );
         model.put( MARK_PROJECT, _project );
+
         ExtendableResourcePluginActionManager.fillModel( request, getUser( ), model, String.valueOf(nId), Project.PROPERTY_RESOURCE_TYPE );
         return getPage( PROPERTY_PAGE_TITLE_MODIFY_PROJECT, TEMPLATE_MODIFY_PROJECT, model );
     }

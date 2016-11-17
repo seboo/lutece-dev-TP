@@ -33,13 +33,11 @@
  */
 package fr.paris.lutece.plugins.bp.business;
 
+import org.hibernate.validator.constraints.*;
+
 import java.util.Locale;
 
-import javax.validation.constraints.Size;
-
-import org.hibernate.validator.constraints.NotEmpty;
-import org.hibernate.validator.constraints.Range;
-import org.hibernate.validator.constraints.URL;
+import javax.validation.constraints.*;
 
 import fr.paris.lutece.portal.service.i18n.Localizable;
 import fr.paris.lutece.portal.service.resource.IExtendableResource;
@@ -51,9 +49,11 @@ import fr.paris.lutece.portal.service.resource.IExtendableResource;
 public class Project implements Localizable, IExtendableResource
 {
     
-	public static final String PROPERTY_RESOURCE_TYPE="project";
-	// Variables declarations 
+    public static final String PROPERTY_RESOURCE_TYPE="project";
+    
+    // Variables declarations 
     private int _nId;
+    
     @NotEmpty( message = "#i18n{bp.validation.project.Name.notEmpty}" )
     @Size( max = 50, message = "#i18n{bp.validation.project.Name.size}" )
     private String _strName;
@@ -79,9 +79,9 @@ public class Project implements Localizable, IExtendableResource
     }
 
     /**
-    * Returns the Id
-    * @return The Id
-    */
+     * Returns the Id
+     * @return The Id
+     */
     public int getId(  )
     {
         return _nId;
@@ -150,34 +150,39 @@ public class Project implements Localizable, IExtendableResource
         _strImageUrl = strImageUrl;
     }
 
-	@Override
-	public String getExtendableResourceDescription() {
-		return _strDescription;
-	}
+    @Override
+    public String getExtendableResourceDescription(  )
+    {
+        return _strDescription;
+    }
 
-	@Override
-	public String getExtendableResourceImageUrl() {
-		return _strImageUrl;
-	}
+    @Override
+    public String getExtendableResourceImageUrl(  )
+    {
+        return _strImageUrl;
+    }
 
-	@Override
-	public String getExtendableResourceName() {
-		return _strName;
-	}
+    @Override
+    public String getExtendableResourceName(  )
+    {
+        return _strName;
+    }
 
-	@Override
-	public String getExtendableResourceType() {
-		return PROPERTY_RESOURCE_TYPE;
-	}
+    @Override
+    public String getExtendableResourceType(  )
+    {
+        return PROPERTY_RESOURCE_TYPE;
+    }
 
-	@Override
-	public String getIdExtendableResource() {
-		return Integer.toString(_nId);
-	}
+    @Override
+    public String getIdExtendableResource(  )
+    {
+        return Integer.toString(_nId);
+    }
 
-	@Override
-	public void setLocale(Locale arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    public void setLocale( Locale arg0 )
+    {
+        // TODO Auto-generated method stub
+    }
 }
