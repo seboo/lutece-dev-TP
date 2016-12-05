@@ -31,8 +31,6 @@
  *
  * License 1.0
  */
-
- 
 package fr.paris.lutece.plugins.bp.web;
 
 import fr.paris.lutece.plugins.bp.business.Project;
@@ -47,7 +45,6 @@ import fr.paris.lutece.util.url.UrlItem;
 import java.util.List;
 import java.util.Map;
 
-
 import javax.servlet.http.HttpServletRequest;
 
 
@@ -57,7 +54,6 @@ import javax.servlet.http.HttpServletRequest;
 @Controller( controllerJsp = "ManageProjects.jsp", controllerPath = "jsp/admin/plugins/bp/", right = "BP_MANAGEMENT" )
 public class ProjectJspBean extends ManageBpJspBean
 {
-
     ////////////////////////////////////////////////////////////////////////////
     // Constants
 
@@ -65,7 +61,6 @@ public class ProjectJspBean extends ManageBpJspBean
     private static final String TEMPLATE_MANAGE_PROJECTS = "/admin/plugins/bp/manage_projects.html";
     private static final String TEMPLATE_CREATE_PROJECT = "/admin/plugins/bp/create_project.html";
     private static final String TEMPLATE_MODIFY_PROJECT = "/admin/plugins/bp/modify_project.html";
-
 
     // Parameters
     private static final String PARAMETER_ID_PROJECT = "id";
@@ -78,13 +73,11 @@ public class ProjectJspBean extends ManageBpJspBean
     // Markers
     private static final String MARK_PROJECT_LIST = "project_list";
     private static final String MARK_PROJECT = "project";
-
     private static final String JSP_MANAGE_PROJECTS = "jsp/admin/plugins/bp/ManageProjects.jsp";
 
     // Properties
     private static final String MESSAGE_CONFIRM_REMOVE_PROJECT = "bp.message.confirmRemoveProject";
     private static final String PROPERTY_DEFAULT_LIST_PROJECT_PER_PAGE = "bp.listProjects.itemsPerPage";
- 
     private static final String VALIDATION_ATTRIBUTES_PREFIX = "bp.model.entity.project.attribute.";
 
     // Views
@@ -102,15 +95,15 @@ public class ProjectJspBean extends ManageBpJspBean
     private static final String INFO_PROJECT_CREATED = "bp.info.project.created";
     private static final String INFO_PROJECT_UPDATED = "bp.info.project.updated";
     private static final String INFO_PROJECT_REMOVED = "bp.info.project.removed";
-    
+
     // Session variable to store working values
     private Project _project;
-    
-    
+
     @View( value = VIEW_MANAGE_PROJECTS, defaultView = true )
     public String getManageProjects( HttpServletRequest request )
     {
         _project = null;
+
         List<Project> listProjects = (List<Project>) ProjectHome.getProjectsList(  );
         Map<String, Object> model = getPaginatedListModel( request, MARK_PROJECT_LIST, listProjects, JSP_MANAGE_PROJECTS );
 
@@ -204,7 +197,7 @@ public class ProjectJspBean extends ManageBpJspBean
     {
         int nId = Integer.parseInt( request.getParameter( PARAMETER_ID_PROJECT ) );
 
-        if ( _project == null || ( _project.getId(  ) != nId ))
+        if ( ( _project == null ) || ( _project.getId(  ) != nId ) )
         {
             _project = ProjectHome.findByPrimaryKey( nId );
         }
@@ -229,7 +222,7 @@ public class ProjectJspBean extends ManageBpJspBean
         // Check constraints
         if ( !validateBean( _project, VALIDATION_ATTRIBUTES_PREFIX ) )
         {
-            return redirect( request, VIEW_MODIFY_PROJECT, PARAMETER_ID_PROJECT, _project.getId( ) );
+            return redirect( request, VIEW_MODIFY_PROJECT, PARAMETER_ID_PROJECT, _project.getId(  ) );
         }
 
         ProjectHome.update( _project );

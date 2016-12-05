@@ -32,48 +32,50 @@
  * License 1.0
  */
 package fr.paris.lutece.plugins.bp.web;
- 
+
 import fr.paris.lutece.plugins.bp.business.Project;
 import fr.paris.lutece.plugins.bp.business.ProjectHome;
 import fr.paris.lutece.portal.util.mvc.commons.annotations.Action;
-import fr.paris.lutece.portal.web.xpages.XPage;
-import fr.paris.lutece.portal.util.mvc.xpage.MVCApplication;
 import fr.paris.lutece.portal.util.mvc.commons.annotations.View;
+import fr.paris.lutece.portal.util.mvc.xpage.MVCApplication;
 import fr.paris.lutece.portal.util.mvc.xpage.annotations.Controller;
 import fr.paris.lutece.util.url.UrlItem;
+import fr.paris.lutece.portal.web.xpages.XPage;
+
 import java.util.Map;
 import fr.paris.lutece.portal.service.message.SiteMessageService;
 import fr.paris.lutece.portal.service.message.SiteMessage;
 import fr.paris.lutece.portal.service.message.SiteMessageException;
-import javax.servlet.http.HttpServletRequest; 
+
+import javax.servlet.http.HttpServletRequest;
+
 
 /**
  * This class provides the user interface to manage Project xpages ( manage, create, modify, remove )
  */
- 
-@Controller( xpageName = "project" , pageTitleI18nKey = "bp.xpage.project.pageTitle" , pagePathI18nKey = "bp.xpage.project.pagePathLabel" )
+@Controller( xpageName = "project", pageTitleI18nKey = "bp.xpage.project.pageTitle", pagePathI18nKey = "bp.xpage.project.pagePathLabel" )
 public class ProjectXPage extends MVCApplication
 {
     // Templates
-    private static final String TEMPLATE_MANAGE_PROJECTS="/skin/plugins/bp/manage_projects.html";
-    private static final String TEMPLATE_CREATE_PROJECT="/skin/plugins/bp/create_project.html";
-    private static final String TEMPLATE_MODIFY_PROJECT="/skin/plugins/bp/modify_project.html";
-    
+    private static final String TEMPLATE_MANAGE_PROJECTS = "/skin/plugins/bp/manage_projects.html";
+    private static final String TEMPLATE_CREATE_PROJECT = "/skin/plugins/bp/create_project.html";
+    private static final String TEMPLATE_MODIFY_PROJECT = "/skin/plugins/bp/modify_project.html";
+
     // JSP
     private static final String JSP_PAGE_PORTAL = "jsp/site/Portal.jsp";
-    
+
     // Parameters
     private static final String PARAMETER_ID_PROJECT="id";
     private static final String PARAM_ACTION = "action";
     private static final String PARAM_PAGE = "page";
-    
+
     // Markers
     private static final String MARK_PROJECT_LIST = "project_list";
     private static final String MARK_PROJECT = "project";
     
     // Message
     private static final String MESSAGE_CONFIRM_REMOVE_PROJECT = "bp.message.confirmRemoveProject";
-    
+
     // Views
     private static final String VIEW_MANAGE_PROJECTS = "manageProjects";
     private static final String VIEW_CREATE_PROJECT = "createProject";
@@ -89,14 +91,15 @@ public class ProjectXPage extends MVCApplication
     private static final String INFO_PROJECT_CREATED = "bp.info.project.created";
     private static final String INFO_PROJECT_UPDATED = "bp.info.project.updated";
     private static final String INFO_PROJECT_REMOVED = "bp.info.project.removed";
-    
+
     // Session variable to store working values
     private Project _project;
-    
+
     @View( value = VIEW_MANAGE_PROJECTS, defaultView = true )
     public XPage getManageProjects( HttpServletRequest request )
     {
         _project = null;
+
         Map<String, Object> model = getModel(  );
         model.put( MARK_PROJECT_LIST, ProjectHome.getProjectsList(  ) );
 
@@ -190,7 +193,7 @@ public class ProjectXPage extends MVCApplication
     {
         int nId = Integer.parseInt( request.getParameter( PARAMETER_ID_PROJECT ) );
 
-        if ( _project == null  || ( _project.getId( ) != nId ))
+        if ( ( _project == null ) || ( _project.getId(  ) != nId ) )
         {
             _project = ProjectHome.findByPrimaryKey( nId );
         }
